@@ -1,0 +1,14 @@
+body{
+    background-color: #403D39;
+    display: flex;
+    flex-direction: column;
+}
+#filterBar{
+    background-color: #252422;
+    height: 200px;
+}
+#itemContainer{
+    margin-top: 40px;
+    background-color: #252422;
+    height: auto;
+}
