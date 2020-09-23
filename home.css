@@ -7,8 +7,91 @@ body{
     background-color: #252422;
     height: 200px;
 }
+img{
+    width: 75px;
+}
 #itemContainer{
     margin-top: 40px;
     background-color: #252422;
     height: auto;
+}
+.item{
+    background-color: #403D39;
+    margin-top: 30px;
+    color: white;
+    margin-left: 10%;
+    justify-self: center;
+    width: 80%;
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.leftdata{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.imageContainer{
+    margin-left: 25px;
+    margin-right: 20px;
+    align-self: center;
+}
+.Name{
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.info{
+    color: #CCC5B9;
+    width: 250px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.companyContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.new{
+    background-color: #EB5E28;
+    border-radius: 15px;
+}
+.featured{
+    background-color: #A83B10;
+    border-radius: 15px;
+}
+.companyName{
+    color: #EB5E28;
+}
+.position{
+    color: #FFFCF2;
+    font-weight: 900;
+    font-size: 20px;
+}
+.skillsContainer{
+    margin-right: 3%;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.skill{
+    color: #EB5E28;
+    margin-right: 30px;
+    background-color: #615D56;
+}
+#filterBar{
+    background-color: #403D39;
+    margin-top: 30px;
+    color: white;
+    margin-left: 10%;
+    justify-self: center;
+    width: 80%;
+    height: 120px;
+}
+#filers{
+    display: inherit;
 }
