@@ -12,21 +12,7 @@ xhr.onreadystatechange = function ()
             console.log(jsonData);
             for (var i = 0; i < jsonData.length; i++) 
             {   
-                var varnew;
-                var varfeatured
-                if(jsonData[i]["new"]==true){
-                    varnew=" new ";
-                }
-                else{
-                    varnew="";
-                }
-                if(jsonData[i]["featured"]==true){
-                    varfeatured=" featured ";
-                }
-                else{
-                    varfeatured="";
-                }
-                htmlString = '<div class="item" id="'+jsonData[i]["id"]+'"><div class="leftdata"><div class=imageContainer><img src="'+jsonData[i]["logo"]+'"></div><div class="companyContainer"><div class="Name"><div class="companyName">'+jsonData[i]["company"]+'</div><div class="new"> '+varnew+' </div><div class="featured"> '+varfeatured+' </div></div><div class="position">'+jsonData[i]["position"]+'</div><div class="info"><div class="Time">'+jsonData[i]["postedAt"]+'</div><div class="dot">.</div><div class="contract">'+jsonData[i]["contract"]+'</div><div class="dot">.</div><div class="location">'+jsonData[i]["location"]+'</div></div></div></div><div class="skillsContainer"><div class="skill" class="role">'+jsonData[i]["role"]+'</div><div class="skill" class="level">'+jsonData[i]["level"]+'</div></div></div>';
+                htmlString = '<div class="item" id="'+jsonData[i]["id"]+'"><div class="leftdata"><div class=imageContainer><img src="'+jsonData[i]["logo"]+'"></div><div class="companyContainer"><div class="Name" id="nameof'+jsonData[i]["id"]+'"><div class="companyName">'+jsonData[i]["company"]+'</div></div><div class="position">'+jsonData[i]["position"]+'</div><div class="info"><div class="Time">'+jsonData[i]["postedAt"]+'</div><div class="dot">.</div><div class="contract">'+jsonData[i]["contract"]+'</div><div class="dot">.</div><div class="location">'+jsonData[i]["location"]+'</div></div></div></div><div class="skillsContainer"><div class="skill" class="role">'+jsonData[i]["role"]+'</div><div class="skill" class="level">'+jsonData[i]["level"]+'</div></div></div>';
                 itemContainer.innerHTML += (htmlString);
                 for(var j=0; j<jsonData[i]["languages"].length;j++)
                 {
@@ -37,6 +23,20 @@ xhr.onreadystatechange = function ()
                 {
                     htmlString2='<div class="skill">'+jsonData[i]["tools"][j]+'</div>';
                     document.getElementById("itemContainer").lastChild.lastChild.innerHTML += (htmlString2);
+                }
+                if(jsonData[i]["new"]==true)
+                {
+                    var j=i+1;
+                    var nameid= "nameof"+j;
+                    console.log(document.getElementById(nameid).innerHTML)
+                    document.getElementById(nameid).innerHTML+='<div class="new">new</div>';
+                }
+                if(jsonData[i]["featured"]==true)
+                {
+                    var j=i+1;
+                    var nameid= "nameof"+j;
+                    console.log(document.getElementById(nameid).innerHTML)
+                    document.getElementById(nameid).innerHTML+='<div class="featured">featured</div>';
                 }
             }
             addF=()=>{

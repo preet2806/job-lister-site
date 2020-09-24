@@ -59,10 +59,14 @@ img{
 .new{
     background-color: #EB5E28;
     border-radius: 15px;
+    padding-right: 7px;
+    padding-left: 7px;
 }
 .featured{
     background-color: #A83B10;
     border-radius: 15px;
+    padding-right: 7px;
+    padding-left: 7px;
 }
 .companyName{
     color: #EB5E28;
@@ -83,6 +87,7 @@ img{
     color: #EB5E28;
     margin-right: 30px;
     background-color: #615D56;
+    padding: 2px 7px;
 }
 #filterBar{
     background-color: #403D39;
