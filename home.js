@@ -1,15 +1,7 @@
 const xhr = new XMLHttpRequest();
 let jsonData=[];
-function addFilter(){
-    var filterName=document.getElementById("filters").value;
-    console.log(filterName);
-    document.getElementById("filterBar").innerHTML+= filterName+'<select id="'+filterName+'"></select>';
-    var filterSet= new Set();
-    for(var k=1;k<11;k++)
-    {
-        filterSet.add(jsonData[k][filterName]);
-    }
-}
+addF=()=>{};
+filterType=()=>{};
 xhr.onreadystatechange = function () 
 {
   if (xhr.readyState == 4) 
@@ -47,16 +39,44 @@ xhr.onreadystatechange = function ()
                     document.getElementById("itemContainer").lastChild.lastChild.innerHTML += (htmlString2);
                 }
             }
-            function addFilter(){
+            addF=()=>{
+                for(var m=0;m<jsonData.length;m++)
+                {
+                    var n=m+1;
+                    document.getElementById(n).style.display="flex";
+                   
+                }
                 var filterName=document.getElementById("filters").value;
-                console.log(filterName);
-                document.getElementById("filterBar").innerHTML+= filterName+'<select id="'+filterName+'"></select>';
+                document.getElementById("filterBar").innerHTML= 'Filter By<select id="filters" onchange="addFilter()"><option value="none"></option><option value="level" id="levelFilter">level</option><option value="role" id="roleFilter">role</option><option value="contract">contract</option><option value="location">location</option></select>'+filterName+'<select id="'+filterName+'" onchange="filterAs()"></select>';
                 var filterSet= new Set();
-                for(var k=1;k<11;k++)
+                for(var k=0;k<jsonData.length;k++)
                 {
                     filterSet.add(jsonData[k][filterName]);
                 }
-                console.log(filterSet);
+                filterSet=Array.from(filterSet);
+                for(var l=0;l<filterSet.length;l++)
+                {
+                    htmlstring3='<option value="'+filterSet[l]+'">'+filterSet[l]+'</option>';
+                    document.getElementById(filterName).innerHTML+=htmlstring3;
+                }
+            }
+            filterType=()=>{
+                for(var m=0;m<jsonData.length;m++)
+                {
+                    var n=m+1;;
+                    document.getElementById(n).style.display="flex";
+                   
+                }
+                var type=document.getElementById("filterBar").lastChild.id;
+                var filterValue=document.getElementById("filterBar").lastChild.value;
+                for(var m=0;m<jsonData.length;m++)
+                {
+                    if(jsonData[m][type]!=filterValue)
+                    {
+                        var n=m+1;
+                        document.getElementById(n).style.display="none";
+                    }
+                }
             }
             
       }
@@ -69,6 +89,9 @@ xhr.onreadystatechange = function ()
 };
 xhr.open('get','https://preet2806.github.io/json/data.json',true);
 xhr.send();
-const addF = () => {
-    addFilter();
+function addFilter(){
+    addF();
+}
+function filterAs(){
+    filterType();
 }

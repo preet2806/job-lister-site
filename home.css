@@ -17,7 +17,8 @@ img{
 }
 .item{
     background-color: #403D39;
-    margin-top: 30px;
+    margin-top: 25px;
+    margin-bottom: 15px;
     color: white;
     margin-left: 10%;
     justify-self: center;
@@ -86,12 +87,53 @@ img{
 #filterBar{
     background-color: #403D39;
     margin-top: 30px;
+    align-self: center;
     color: white;
-    margin-left: 10%;
     justify-self: center;
-    width: 80%;
-    height: 120px;
+    width: 400px;
+    height: 30px;
+    display: flex;
+    justify-content: space-evenly;
 }
 #filers{
     display: inherit;
+}
+@media (max-width: 6in){
+    .item{
+        flex-direction: column;
+        height: 180px;
+        margin-bottom: 50px;
+        padding-left: 4%;
+        padding-bottom: 4%;
+    }
+    .leftdata{
+        flex-direction: column;
+        justify-content: space-evenly; 
+    }
+    .imageContainer{
+        margin-left: 0px;
+        align-self: flex-start;
+        transform: translateY(-50%);
+    }
+    img{
+        width: 50px;
+    }
+    .Name{
+        justify-content: space-between;
+        width: 50%;
+    }
+    .companyContainer{
+        height: 80px;
+        transform: translateY(-20px);
+        justify-content: space-between;
+    }
+    .skillsContainer{
+        align-self: start;
+        margin-left: 0px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .skill{
+        margin-bottom: 7px;
+    }
 }
