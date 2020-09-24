@@ -47,12 +47,27 @@ xhr.onreadystatechange = function ()
                    
                 }
                 var filterName=document.getElementById("filters").value;
-                document.getElementById("filterBar").innerHTML= 'Filter By<select id="filters" onchange="addFilter()"><option value="none"></option><option value="level" id="levelFilter">level</option><option value="role" id="roleFilter">role</option><option value="contract">contract</option><option value="location">location</option></select>'+filterName+'<select id="'+filterName+'" onchange="filterAs()"></select>';
+                document.getElementById("filterBar").innerHTML= 'Filter By<select id="filters" onchange="addFilter()"><option value="none"></option><option value="level" id="levelFilter">level</option><option value="role" id="roleFilter">role</option><option value="contract">contract</option><option value="location">location</option><option value="languages">languages</option><option value="tools">tools</option></select>'+filterName+'<select id="'+filterName+'" onchange="filterAs()"></select>';
                 var filterSet= new Set();
-                for(var k=0;k<jsonData.length;k++)
+                if(filterName=="languages" || filterName=="tools")
                 {
-                    filterSet.add(jsonData[k][filterName]);
+                    for(var k=0;k<jsonData.length;k++)
+                    {
+                        console.log(jsonData[k][filterName]);
+                        for(var p=0;p<jsonData[k][filterName].length;p++)
+                        {
+                           filterSet.add(jsonData[k][filterName][p]);
+                        }
+                        
+                    }
                 }
+                else{
+                    for(var k=0;k<jsonData.length;k++)
+                    {
+                        filterSet.add(jsonData[k][filterName]);
+                    }
+                }
+                
                 filterSet=Array.from(filterSet);
                 for(var l=0;l<filterSet.length;l++)
                 {
@@ -69,14 +84,34 @@ xhr.onreadystatechange = function ()
                 }
                 var type=document.getElementById("filterBar").lastChild.id;
                 var filterValue=document.getElementById("filterBar").lastChild.value;
-                for(var m=0;m<jsonData.length;m++)
+                if(type=="languages" || type=="tools")
                 {
-                    if(jsonData[m][type]!=filterValue)
+                    for(var m=0;m<jsonData.length;m++)
                     {
                         var n=m+1;
                         document.getElementById(n).style.display="none";
+                        var p=0;
+                        while(p<jsonData[m][type].length)
+                        {
+                            if(jsonData[m][type][p]==filterValue)
+                            {
+                                document.getElementById(n).style.display="flex";
+                            }
+                            p++;
+                        }   
                     }
                 }
+                else{
+                    for(var m=0;m<jsonData.length;m++)
+                    {
+                        if(jsonData[m][type]!=filterValue)
+                        {
+                            var n=m+1;
+                            document.getElementById(n).style.display="none";
+                        }
+                    }
+                }
+                
             }
             
       }
